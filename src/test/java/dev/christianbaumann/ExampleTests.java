@@ -38,4 +38,17 @@ public class ExampleTests {
             log().all();
     }
 
+    @Test
+    void usePathParameters() {
+
+        given().
+            pathParam("bookingId", 1).
+        when().
+            get("http://localhost:9876/booking/{bookingId}").
+        then().
+            assertThat().
+            body("firstname", equalTo("Frodo")).
+            body("lastname", equalTo("Baggins"));
+    }
+
 }
