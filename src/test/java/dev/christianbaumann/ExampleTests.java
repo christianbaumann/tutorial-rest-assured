@@ -20,4 +20,13 @@ public class ExampleTests {
             body("lastname", equalTo("Baggins"));
     }
 
+    @Test
+    void logRequest() {
+
+        given().
+            log().all().
+        when().
+            get("http://localhost:9876/booking/1");
+    }
+
 }
