@@ -10,7 +10,12 @@
     },
     "jsonBody": {
       "firstname": "Frodo",
-      "lastname": "Baggins"
+      "lastname": "Baggins",
+      "totalprice": 297,
+      "bookingdates": {
+        "checkin": "2023-11-13",
+        "checkout": "2023-11-16"
+      }
     }
   }
 }

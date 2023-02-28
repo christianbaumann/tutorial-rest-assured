@@ -29,4 +29,13 @@ public class ExampleTests {
             get("http://localhost:9876/booking/1");
     }
 
+    @Test
+    void logResponse() {
+
+        given().
+            get("http://localhost:9876/booking/1").
+        then().
+            log().all();
+    }
+
 }
