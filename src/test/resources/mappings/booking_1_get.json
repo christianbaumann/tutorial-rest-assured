@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/booking/1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "firstname": "Frodo",
+      "lastname": "Baggins"
+    }
+  }
+}
