@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/booking/2"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "firstname": "Gandalf",
+      "lastname": "The White",
+      "totalprice": 297,
+      "bookingdates": {
+        "checkin": "2023-11-13",
+        "checkout": "2023-11-16"
+      }
+    }
+  }
+}

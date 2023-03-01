@@ -2,6 +2,8 @@ package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -61,6 +63,24 @@ public class ExampleTests {
         then().
             assertThat().
             body("bookingdates.checkin", equalTo("2023-11-13"));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, Frodo, Baggins",
+            "2, Gandalf, The White",
+            "3, Aragorn, Elessar"
+    })
+    void aDataDrivenTest(int bookingId, String firstName, String lastname){
+
+        given().
+            pathParam("bookingId", bookingId).
+        when().
+            get("http://localhost:9876/booking/{bookingId}").
+        then().
+            assertThat().
+            body("firstname", equalTo(firstName)).
+            body("lastname", equalTo(lastname));
     }
 
 }
