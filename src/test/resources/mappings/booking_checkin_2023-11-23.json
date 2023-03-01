@@ -1,0 +1,26 @@
+{
+  "request": {
+    "urlPathPattern": "/booking",
+    "method": "GET",
+    "queryParameters": {
+      "checkin": {
+        "equalTo": "2023-11-13"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "firstname": "Frodo",
+      "lastname": "Baggins",
+      "totalprice": 297,
+      "bookingdates": {
+        "checkin": "2023-11-13",
+        "checkout": "2023-11-16"
+      }
+    }
+  }
+}

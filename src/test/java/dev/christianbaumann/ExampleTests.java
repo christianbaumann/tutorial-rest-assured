@@ -51,4 +51,16 @@ public class ExampleTests {
             body("lastname", equalTo("Baggins"));
     }
 
+    @Test
+    void useQueryParameters() {
+
+        given().
+            queryParam("checkin", "2023-11-13").
+        when().
+            get("http://localhost:9876/booking").
+        then().
+            assertThat().
+            body("bookingdates.checkin", equalTo("2023-11-13"));
+    }
+
 }
