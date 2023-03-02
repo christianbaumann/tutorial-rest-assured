@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/basicAuth",
+    "basicAuth": {
+      "username": {
+        "doesNotMatch" : "^username$"
+      },
+      "password": "password"
+    }
+  },
+  "response": {
+    "status": 401
+  }
+}

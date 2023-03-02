@@ -83,4 +83,20 @@ public class ExampleTests {
             body("lastname", equalTo(lastname));
     }
 
+    @Test
+    void useBasicAuthentication() {
+
+        // TODO add response for not matching template, see: https://stackoverflow.com/questions/75614289/wiremock-json-template-basicauth-and-doesnotmatch-not-working
+
+        given().
+            auth().
+            preemptive().
+            basic("username", "password").
+        when().
+            get("http://localhost:9876/basicAuth").
+        then().
+            assertThat().
+            statusCode(200);
+    }
+
 }
