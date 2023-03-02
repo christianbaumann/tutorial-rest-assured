@@ -86,10 +86,9 @@ public class ExampleTests {
             body("lastname", equalTo(lastname));
     }
 
+    // TODO add response for not matching template, see: https://stackoverflow.com/questions/75614289/wiremock-json-template-basicauth-and-doesnotmatch-not-working
     @Test
     void useBasicAuthentication() {
-
-        // TODO add response for not matching template, see: https://stackoverflow.com/questions/75614289/wiremock-json-template-basicauth-and-doesnotmatch-not-working
 
         given().
             auth().
@@ -102,10 +101,9 @@ public class ExampleTests {
             statusCode(200);
     }
 
+    // TODO build JSON response template
     @Test
     void useOauthAuthentication() {
-
-        // build JSON response template
 
         given().
             auth().
@@ -117,10 +115,31 @@ public class ExampleTests {
             statusCode(200);
     }
 
+    @Test
+    void captureAndReuseBookingId() {
+
+        Integer bookingId =
+            given().
+                queryParam("checkin", "2023-11-13").
+            when().
+                get("http://localhost:9876/booking").
+            then().
+                extract().
+                path("bookingId");
+
+        given().
+            pathParam("bookingId", bookingId).
+        when().
+            get("http://localhost:9876/booking/{bookingId}").
+        then().
+            statusCode(200);
+    }
+
     private RequestSpecification requestSpec;
 
     @BeforeEach
     void createRequestSpec() {
+
         requestSpec = new RequestSpecBuilder().
             setBaseUri("http://localhost").
             setPort(9876).
