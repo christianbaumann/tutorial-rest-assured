@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/address/1"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "street": "1 Bagshot Row",
+      "postalCode": "123",
+      "city": "Hobbiton",
+      "country": "The Shire"
+    }
+  }
+}

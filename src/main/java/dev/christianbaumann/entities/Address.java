@@ -7,6 +7,13 @@ public class Address {
     private String city;
     private String country;
 
+    /*
+     * This constructor is only added for deserialization purposes
+     * It should not be called directly
+     */
+    public Address() {
+    }
+
     public Address(String street, String postalCode, String city, String country) {
         this.street = street;
         this.postalCode = postalCode;

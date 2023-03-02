@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @WireMockTest(httpPort = 9876)
 public class ExampleTests {
@@ -194,6 +195,22 @@ public class ExampleTests {
         then().
             assertThat().
             statusCode(201);
+    }
+
+    @Test
+    void deserializeJsonToAddress() {
+
+        Address myAddress =
+
+            given().
+            when().
+                get("http://localhost:9876/address/1").
+                as(Address.class);
+
+        assertEquals("1 Bagshot Row", myAddress.getStreet());
+        assertEquals("123", myAddress.getPostalCode());
+        assertEquals("Hobbiton", myAddress.getCity());
+        assertEquals("The Shire", myAddress.getCountry());
     }
 
 }
