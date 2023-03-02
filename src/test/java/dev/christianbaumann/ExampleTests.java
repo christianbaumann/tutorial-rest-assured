@@ -2,7 +2,10 @@ package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -156,6 +159,25 @@ public class ExampleTests {
         then().
             assertThat().
             statusCode(200);
+    }
+
+    private ResponseSpecification responseSpec;
+
+    @BeforeEach
+    void createResponseSpec() {
+        responseSpec = new ResponseSpecBuilder().
+            expectStatusCode(200).
+            expectContentType(ContentType.JSON).
+            build();
+    }
+
+    @Test
+    void useResponseSpec() {
+
+        given().
+            get("http://localhost:9876/booking/1").
+        then().
+            spec(responseSpec);
     }
 
 }
