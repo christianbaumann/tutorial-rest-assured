@@ -99,4 +99,19 @@ public class ExampleTests {
             statusCode(200);
     }
 
+    @Test
+    void useOauthAuthentication() {
+
+        // build JSON response template
+
+        given().
+            auth().
+            oauth2("myAuthentiactionToken").
+        when().
+            get("http://localhost:9876/oAuth").
+        then().
+            assertThat().
+            statusCode(200);
+    }
+
 }
