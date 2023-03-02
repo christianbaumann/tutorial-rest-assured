@@ -1,6 +1,7 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import dev.christianbaumann.entities.Address;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -178,6 +179,21 @@ public class ExampleTests {
             get("http://localhost:9876/booking/1").
         then().
             spec(responseSpec);
+    }
+
+    @Test
+    void serializeAddressToJson() {
+
+        Address myAddress = new Address("1 Bagshot Row", "123", "Hobbiton", "The Shire");
+
+        given().
+            body(myAddress).
+            log().body().
+        when().
+            post("http://localhost:9876/address").
+        then().
+            assertThat().
+            statusCode(201);
     }
 
 }
