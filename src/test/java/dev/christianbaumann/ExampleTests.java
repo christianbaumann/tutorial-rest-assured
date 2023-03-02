@@ -1,6 +1,9 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.specification.RequestSpecification;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -109,6 +112,28 @@ public class ExampleTests {
             oauth2("myAuthentiactionToken").
         when().
             get("http://localhost:9876/oAuth").
+        then().
+            assertThat().
+            statusCode(200);
+    }
+
+    private RequestSpecification requestSpec;
+
+    @BeforeEach
+    void createRequestSpec() {
+        requestSpec = new RequestSpecBuilder().
+            setBaseUri("http://localhost").
+            setPort(9876).
+            build();
+    }
+
+    @Test
+    void useRequestSpec() {
+
+        given().
+            spec(requestSpec).
+        when().
+            get("/booking/1").
         then().
             assertThat().
             statusCode(200);
