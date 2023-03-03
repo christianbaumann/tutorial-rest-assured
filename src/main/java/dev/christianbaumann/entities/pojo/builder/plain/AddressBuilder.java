@@ -1,4 +1,6 @@
-package dev.christianbaumann.entities.pojo;
+package dev.christianbaumann.entities.pojo.builder.plain;
+
+import dev.christianbaumann.entities.pojo.Address;
 
 public class AddressBuilder {
     private String street = "1 Bagshot Row";
@@ -22,7 +24,7 @@ public class AddressBuilder {
         this.city = city;
     }
 
-    public void withCountrs(String country) {
+    public void withCountry(String country) {
         this.country = country;
     }
 }
