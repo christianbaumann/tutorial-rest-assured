@@ -91,20 +91,6 @@ public class ExampleTests {
             body("lastname", equalTo(lastname));
     }
 
-    // TODO build JSON response template
-    @Test
-    void useOauthAuthentication() {
-
-        given().
-            auth().
-            oauth2("myAuthentiactionToken").
-        when().
-            get("http://localhost:9876/oAuth").
-        then().
-            assertThat().
-            statusCode(200);
-    }
-
     @Test
     void captureAndReuseBookingId() {
 
