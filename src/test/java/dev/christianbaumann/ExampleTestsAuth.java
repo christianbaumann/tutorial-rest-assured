@@ -1,8 +1,8 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
+import dev.christianbaumann.extensions.AuthRequestFilter;
 import dev.christianbaumann.extensions.BasicAuthRequestFilter;
-import dev.christianbaumann.extensions.OauthRequestFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -23,10 +23,10 @@ public class ExampleTestsAuth {
         ).build();
 
     @RegisterExtension
-    static WireMockExtension wiremockOauth = WireMockExtension.newInstance().
+    static WireMockExtension wiremockAuth = WireMockExtension.newInstance().
         options(wireMockConfig().
-            port(9877).
-            extensions(new OauthRequestFilter())
+            port(9878).
+            extensions(new AuthRequestFilter("oAuth"))
         ).build();
 
     @BeforeEach
@@ -39,7 +39,7 @@ public class ExampleTestsAuth {
 
     @BeforeEach
     public void stubForOauth() {
-        wiremockOauth.stubFor(get(urlEqualTo("/oAuth"))
+        wiremockAuth.stubFor(get(urlEqualTo("/oAuth"))
             .willReturn(aResponse()
                 .withStatus(200)
             ));
@@ -80,7 +80,7 @@ public class ExampleTestsAuth {
             auth().
             oauth2("myAuthentiactionToken").
         when().
-            get("http://localhost:9877/oAuth").
+            get("http://localhost:9878/oAuth").
         then().
             assertThat().
             statusCode(200);
@@ -93,7 +93,20 @@ public class ExampleTestsAuth {
             auth().
             oauth2("notMyAuthentiactionToken").
         when().
-            get("http://localhost:9877/oAuth").
+            get("http://localhost:9878/oAuth").
+        then().
+            assertThat().
+            statusCode(401);
+    }
+
+    @Test
+    void useOauthAuthentication_AuthRequestFilter() {
+
+        given().
+            auth().
+            oauth2("myAuthentiactionToken123").
+        when().
+            get("http://localhost:9878/oAuth").
         then().
             assertThat().
             statusCode(401);
