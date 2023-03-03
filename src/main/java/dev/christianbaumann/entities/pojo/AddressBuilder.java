@@ -9,4 +9,20 @@ public class AddressBuilder {
     public Address build() {
         return new Address(street, postalCode, city, country);
     }
+
+    public void withStreet(String street) {
+        this.street = street;
+    }
+
+    public void withPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public void withCity(String city) {
+        this.city = city;
+    }
+
+    public void withCountrs(String country) {
+        this.country = country;
+    }
 }
