@@ -1,8 +1,7 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
-import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.specification.RequestSpecification;
+import dev.christianbaumann.extensions.BasicAuthRequestFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -15,72 +14,46 @@ import static io.restassured.RestAssured.given;
 
 public class ExampleTestsAuth {
 
-    private RequestSpecification requestSpec;
-
     @RegisterExtension
     static WireMockExtension wiremock = WireMockExtension.newInstance().
-            options(wireMockConfig().
-                    port(9876).
-                    extensions(new BasicAuthRequestFilter())
-            ).build();
-
-    @BeforeEach
-    public void createRequestSpec() {
-
-        requestSpec = new RequestSpecBuilder().
-                setBaseUri("http://localhost").
-                setPort(9876).
-                build();
-    }
+        options(wireMockConfig().
+            port(9876).
+            extensions(new BasicAuthRequestFilter())
+        ).build();
 
     @BeforeEach
     public void stubForRequestFiltering() {
-
-        wiremock.stubFor(get(urlEqualTo("/request-filtering"))
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withBody("Authorized")
-                ));
+        wiremock.stubFor(get(urlEqualTo("/basicAuth"))
+            .willReturn(aResponse()
+                .withStatus(200)
+            ));
     }
 
     @Test
-    public void callWireMockWithCorrectCredentials_checkStatusCodeEquals200() {
-
-        /***
-         * Use this test to test your implementation of the request filter
-         * This request should be processed normally since it contains the
-         * proper credentials
-         */
+    void useBasicAuthentication() {
 
         given().
-                spec(requestSpec).
-                and().
-                auth().preemptive().basic("username","password").
-                when().
-                get("/request-filtering").
-                then().
-                assertThat().
-                statusCode(200).
-                and().
-                body(org.hamcrest.Matchers.equalTo("Authorized"));
+            auth().
+            preemptive().
+            basic("username", "password").
+        when().
+            get("http://localhost:9876/basicAuth").
+        then().
+            assertThat().
+            statusCode(200);
     }
 
     @Test
-    public void callWireMockWithIncorrectCredentials_checkStatusCodeEquals401() {
-
-        /***
-         * Use this test to test your implementation of the request filter
-         * This request should be filtered out as it uses incorrect credentials
-         */
+    public void useBasicAuthenticationWithWrongPassword() {
 
         given().
-                spec(requestSpec).
-                and().
-                auth().preemptive().basic("username","incorrectpassword").
-                when().
-                get("/request-filtering").
-                then().
-                assertThat().
-                statusCode(401);
+            auth().
+            preemptive().
+            basic("username", "password-incorrect").
+        when().
+            get("http://localhost:9876/basicAuth").
+        then().
+            assertThat().
+            statusCode(401);
     }
 }
