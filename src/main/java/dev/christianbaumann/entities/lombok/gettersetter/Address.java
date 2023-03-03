@@ -1,4 +1,4 @@
-package dev.christianbaumann.entities.lombok;
+package dev.christianbaumann.entities.lombok.gettersetter;
 
 import lombok.Getter;
 import lombok.Setter;
