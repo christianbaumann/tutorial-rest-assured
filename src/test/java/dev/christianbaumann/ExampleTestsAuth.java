@@ -33,6 +33,7 @@ public class ExampleTestsAuth {
                 build();
     }
 
+    @BeforeEach
     public void stubForRequestFiltering() {
 
         wiremock.stubFor(get(urlEqualTo("/request-filtering"))
@@ -44,8 +45,6 @@ public class ExampleTestsAuth {
 
     @Test
     public void callWireMockWithCorrectCredentials_checkStatusCodeEquals200() {
-
-        stubForRequestFiltering();
 
         /***
          * Use this test to test your implementation of the request filter
@@ -68,8 +67,6 @@ public class ExampleTestsAuth {
 
     @Test
     public void callWireMockWithIncorrectCredentials_checkStatusCodeEquals401() {
-
-        stubForRequestFiltering();
 
         /***
          * Use this test to test your implementation of the request filter
