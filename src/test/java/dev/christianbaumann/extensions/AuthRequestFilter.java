@@ -23,6 +23,7 @@ public class AuthRequestFilter extends StubRequestFilter {
 
         switch (authHeaderValue) {
             case "Bearer myAuthentiactionToken":
+            case "Basic dXNlcm5hbWU6cGFzc3dvcmQ=":
                 requestFilterAction = RequestFilterAction.continueWith(request);
                 break;
             default:
