@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "id": 43900,
+            "name": "Duracell - AAA Batteries (4-Pack)",
+            "price": 5.49
+        },
+        {
+            "id": 48530,
+            "name": "Duracell - AA 1.5V CopperTop Batteries (4-Pack)",
+            "price": 5.49
+        },
+        {
+            "id": 127687,
+            "name": "Duracell - AA Batteries (8-Pack)",
+            "price": 7.49
+        }
+    ]
+}

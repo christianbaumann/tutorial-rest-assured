@@ -1,0 +1,16 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+Matched-Stub-Id: c858c2c0-304e-4113-b329-2c8609cc35de
+Vary: Accept-Encoding, User-Agent
+Content-Encoding: gzip
+Transfer-Encoding: chunked
+
+{
+    "firstname": "Frodo",
+    "lastname": "Baggins",
+    "totalprice": 297,
+    "bookingdates": {
+        "checkin": "2023-11-13",
+        "checkout": "2023-11-16"
+    }
+}
