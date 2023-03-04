@@ -12,11 +12,6 @@ public class ExampleTestsAdressBuilderLombok {
     @Test
     void adressBuilderStandardAddress() {
 
-        private String street = "1 Bagshot Row";
-        private String postalCode = "123";
-        private String city = "Hobbiton";
-        private String country = "The Shire";
-
         Address standardAddress = Address.builder().
             street("Smithy").
             postalCode("666").
@@ -34,23 +29,32 @@ public class ExampleTestsAdressBuilderLombok {
             statusCode(201);
     }
 
-//    @Test
-//    void adressBuilderCustomizedAddress() {
-//
-//        Address myAddress = new AddressBuilder().
-//            street("Smithy").
-//            postalCode("666").
-//            city("Lounely Mountain").
-//            country("Mordor").
-//            build();
-//
-//        given().
-//            body(myAddress).
-//            log().body().
-//        when().
-//            post("http://localhost:9876/address").
-//        then().
-//            assertThat().
-//            statusCode(201);
-//    }
+    @Test
+    void adressBuilderCustomizedAddress() {
+
+        Address standardAddress = Address.builder().
+            street("Smithy").
+            postalCode("666").
+            city("Lounely Mountain").
+            country("Mordor").
+            build();
+
+        Address.AddressBuilder addressBuilder = standardAddress.toBuilder();
+
+        Address newAddress = addressBuilder.
+                street("1 Bagshot Row").
+                postalCode("123").
+                city("Hobbiton").
+                country("The Shire").
+                build();
+
+        given().
+            body(newAddress).
+            log().body().
+        when().
+            post("http://localhost:9876/address").
+        then().
+            assertThat().
+            statusCode(201);
+    }
 }
