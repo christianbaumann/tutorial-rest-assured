@@ -1,6 +1,6 @@
 package dev.christianbaumann.entities.pojo.builder.fluent;
 
-import dev.christianbaumann.entities.pojo.Address;
+import dev.christianbaumann.entities.pojo.plain.Address;
 
 public class AddressBuilder {
     private String street = "1 Bagshot Row";

@@ -1,7 +1,7 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import dev.christianbaumann.entities.pojo.Address;
+import dev.christianbaumann.entities.pojo.plain.Address;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;

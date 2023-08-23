@@ -1,4 +1,4 @@
-package dev.christianbaumann.entities.pojo;
+package dev.christianbaumann.entities.pojo.plain;
 
 public class Address {
 
