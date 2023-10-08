@@ -1,8 +1,8 @@
 package dev.christianbaumann;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import dev.christianbaumann.entities.pojo.plain.Address;
 import dev.christianbaumann.entities.pojo.builder.fluent.AddressBuilder;
+import dev.christianbaumann.entities.pojo.plain.Address;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;

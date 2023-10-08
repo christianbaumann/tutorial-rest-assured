@@ -71,6 +71,11 @@
                 <groupId>org.openrewrite.maven</groupId>
                 <artifactId>rewrite-maven-plugin</artifactId>
                 <version>${openrewrite.version}</version>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>org.openrewrite.java.OrderImports</recipe>
+                    </activeRecipes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
