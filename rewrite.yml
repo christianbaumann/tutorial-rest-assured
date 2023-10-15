@@ -1,7 +1,0 @@
----
-type: specs.openrewrite.org/v1beta/recipe
-name: dev.christianbaumann.UpgradeJavaVersionExample
-displayName: Upgrade Java version example
-recipeList:
-  - org.openrewrite.java.migrate.UpgradeJavaVersion:
-      version: 21
