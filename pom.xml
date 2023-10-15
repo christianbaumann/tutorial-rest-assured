@@ -45,7 +45,7 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${restassured.version}</version>
-            <scope>compile, test</scope>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -73,9 +73,18 @@
                 <version>${openrewrite.version}</version>
                 <configuration>
                     <activeRecipes>
-                        <recipe>org.openrewrite.java.OrderImports</recipe>
+<!--                        <recipe>org.openrewrite.java.OrderImports</recipe>-->
+<!--                        <recipe>dev.christianbaumann.UpgradeJavaVersionExample</recipe>-->
+                        <recipe>org.openrewrite.java.migrate.UpgradeJava17</recipe>
                     </activeRecipes>
                 </configuration>
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.openrewrite.recipe</groupId>-->
+<!--                        <artifactId>rewrite-migrate-java</artifactId>-->
+<!--                        <version>2.1.1</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
             </plugin>
         </plugins>
     </build>
