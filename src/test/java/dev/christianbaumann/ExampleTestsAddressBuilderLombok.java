@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 @WireMockTest(httpPort = 9876)
-public class ExampleTestsadressBuilderLombok {
+public class ExampleTestsAddressBuilderLombok {
 
     @Test
     void addressBuilderStandardAddress() {

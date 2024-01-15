@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 @WireMockTest(httpPort = 9876)
-public class ExampleTestsAdressBuilderFluent {
+public class ExampleTestsAddressBuilderFluent {
 
     @Test
-    void adressBuilderStandardAddress() {
+    void addressBuilderStandardAddress() {
 
         Address myAddress = new AddressBuilder().build();
 
@@ -26,7 +26,7 @@ public class ExampleTestsAdressBuilderFluent {
     }
 
     @Test
-    void adressBuilderCustomizedAddress() {
+    void addressBuilderCustomizedAddress() {
 
         Address myAddress = new AddressBuilder().
                 withStreet("Smithy").
