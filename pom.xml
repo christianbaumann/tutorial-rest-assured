@@ -18,7 +18,7 @@
         <lombok.version>1.18.30</lombok.version>
         <openrewrite.version>5.8.1</openrewrite.version>
         <restassured.version>5.4.0</restassured.version>
-        <slf4j.version>2.0.9</slf4j.version>
+        <slf4j.version>2.0.11</slf4j.version>
         <wiremock.version>2.35.1</wiremock.version>
     </properties>
 
