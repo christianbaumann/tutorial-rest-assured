@@ -1,5 +1,7 @@
 # Building a modular API test framework with REST Assured
 
+[![Java CI with Maven](https://github.com/christianbaumann/tutorial-rest-assured/actions/workflows/maven.yml/badge.svg)](https://github.com/christianbaumann/tutorial-rest-assured/actions/workflows/maven.yml)
+
 Exercises for the [_Building a modular API test framework with REST Assured_-tutorial](https://agiletestingdays.com/).  
 
 Instructions to set up your machine can be found here: [https://christianbaumann.dev/workshops/2023-atd-tutorial-api-test-framework/](https://christianbaumann.dev/workshops/2023-atd-tutorial-api-test-framework/)
