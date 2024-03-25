@@ -15,7 +15,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <junit.version>5.10.1</junit.version>
-        <lombok.version>1.18.30</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
         <openrewrite.version>5.20.0</openrewrite.version>
         <restassured.version>5.4.0</restassured.version>
         <slf4j.version>2.0.11</slf4j.version>
