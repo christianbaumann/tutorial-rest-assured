@@ -19,7 +19,7 @@
         <openrewrite.version>5.20.0</openrewrite.version>
         <restassured.version>5.4.0</restassured.version>
         <slf4j.version>2.0.12</slf4j.version>
-        <wiremock.version>2.35.1</wiremock.version>
+        <wiremock.version>2.35.2</wiremock.version>
     </properties>
 
     <dependencies>
