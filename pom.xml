@@ -16,7 +16,6 @@
         <maven.compiler.target>21</maven.compiler.target>
         <junit.version>5.10.2</junit.version>
         <lombok.version>1.18.32</lombok.version>
-        <openrewrite.version>5.20.0</openrewrite.version>
         <restassured.version>5.4.0</restassured.version>
         <slf4j.version>2.0.12</slf4j.version>
         <wiremock.version>2.35.2</wiremock.version>
@@ -64,19 +63,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.openrewrite.maven</groupId>
-                <artifactId>rewrite-maven-plugin</artifactId>
-                <version>${openrewrite.version}</version>
-                <configuration>
-                    <activeRecipes>
-                        <recipe>org.openrewrite.java.OrderImports</recipe>
-                    </activeRecipes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
